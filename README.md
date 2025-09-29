@@ -32,9 +32,70 @@ The **Adapter Pattern** is a *structural design pattern* that allows objects wit
 
 ---
 
-## ⚙️ How to Run
-1. Install JDK 17+ (tested on JDK 25).  
-2. Clone the repo:  
-   ```bash
-   git clone https://github.com/your-username/assignment3-adapter.git
-   cd assignment3-adapter
+'''mermaid
+classDiagram
+    direction LR
+    class UnitCategory
+    class Unit {
+      +category(): UnitCategory
+      <<enum>>
+    }
+    class ConversionRequest {
+      +value: double
+      +from: Unit
+      +to: Unit
+    }
+    class Converter {
+      <<interface>>
+      +supports(from: Unit, to: Unit) boolean
+      +convert(req: ConversionRequest) double
+    }
+
+    class LegacyDistanceLib {
+      +miToKm(mi: double) double
+      +kmToMi(km: double) double
+      +feetToMeters(ft: double) double
+      +metersToFeet(m: double) double
+    }
+    class LegacyMassLib {
+      +poundsToKg(lb: double) double
+      +kgToPounds(kg: double) double
+    }
+    class LegacyTemperatureLib {
+      +celsiusToFahrenheit(c: double) double
+      +fahrenheitToCelsius(f: double) double
+    }
+
+    class DistanceAdapter {
+      -legacy: LegacyDistanceLib
+      +supports(from,to) boolean
+      +convert(req) double
+    }
+    class MassAdapter {
+      -legacy: LegacyMassLib
+      +supports(from,to) boolean
+      +convert(req) double
+    }
+    class TemperatureAdapter {
+      -legacy: LegacyTemperatureLib
+      +supports(from,to) boolean
+      +convert(req) double
+    }
+
+    class UniversalConversionService {
+      -converters: List<Converter>
+      +convert(value: double, from: Unit, to: Unit) double
+    }
+
+    class App
+
+    Converter <|.. DistanceAdapter
+    Converter <|.. MassAdapter
+    Converter <|.. TemperatureAdapter
+
+    DistanceAdapter --> LegacyDistanceLib
+    MassAdapter --> LegacyMassLib
+    TemperatureAdapter --> LegacyTemperatureLib
+
+    UniversalConversionService o--> Converter
+    App --> UniversalConversionService

@@ -32,7 +32,8 @@ The **Adapter Pattern** is a *structural design pattern* that allows objects wit
 
 ---
 
-'''mermaid
+## 📊 UML Diagram
+```mermaid
 classDiagram
     direction LR
     class UnitCategory
@@ -99,3 +100,23 @@ classDiagram
 
     UniversalConversionService o--> Converter
     App --> UniversalConversionService
+
+
+---
+
+## 🎓 Conclusion
+This project demonstrates the **Adapter Pattern** applied to **unit conversion (Metric ↔ Imperial)** in Java.  
+- The pattern makes legacy libraries (`Legacy*Lib`) compatible with a unified interface (`Converter`).  
+- The implementation follows **Clean Code** principles: clear naming, single responsibility, open/closed design, dependency injection, and modular structure.  
+- The system is **extensible**: new categories (e.g., currency, pressure) can be added simply by creating new adapters without modifying existing code.  
+
+**Result:** The solution is functional, readable, and academically solid — ready for defense in Week 4.
+
+
+---
+
+## Expected Output
+10 miles = 16.09344 km
+5 km = 3.1068559611866697 miles
+80 kg = 176.3698097447798 lb
+20 °C = 68.0 °F

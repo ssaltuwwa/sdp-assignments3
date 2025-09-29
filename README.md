@@ -100,7 +100,7 @@ classDiagram
 
     UniversalConversionService o--> Converter
     App --> UniversalConversionService
-
+```
 
 ---
 

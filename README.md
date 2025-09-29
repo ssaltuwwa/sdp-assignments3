@@ -3,7 +3,7 @@
 ## 📌 Task Description
 According to the syllabus, Assignment #3 requires the implementation of the **Adapter Pattern**.  
 The specific task:  
-> Implement an Adapter for unit conversion (Metric ↔ Imperial) or data parser (XML ↔ JSON).  
+> Implement an Adapter for unit conversion (Metric ↔ Imperial).  
 > Submit code + UML + short report.  
 > Demonstrate application of principles from *Clean Code*.  
 > Defense during Week 4 practice class.
